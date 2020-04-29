@@ -6,6 +6,9 @@ const routes = require('./routes');
 const server = express();
 
 server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+
+server.use('/', express.static(__dirname + '/resources/static'));
 
 server.use('/', routes);
 

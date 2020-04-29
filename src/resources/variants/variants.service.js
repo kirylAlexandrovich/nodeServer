@@ -1,12 +1,9 @@
-const getPageTemplate = require('../templates/page.template');
-const getVariantsTemplate = require('../templates/variants.template');
+const variants = ['variant-1', 'variant-2', 'variant-3', 'variant-4'];
 
-const getPage = () => {
-    return getPageTemplate(
-        getVariantsTemplate()
-    );
+const get = () => {
+    return variants;
 };
 
 module.exports = {
-    getPage
+    get,
 };
