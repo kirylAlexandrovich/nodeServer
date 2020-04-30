@@ -1,4 +1,4 @@
-const variants = ['variant-1', 'variant-2', 'variant-3', 'variant-4'];
+const variants = {var1: 'Jon Doe', var2: 'Marko Polo', var3: 'Tomy Hilfiger', var4: 'Konrad Adenauer'};
 
 const get = () => {
     return variants;
