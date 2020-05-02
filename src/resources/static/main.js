@@ -1,9 +1,11 @@
 const  request = new XMLHttpRequest();
 const main = document.getElementById('main');
 const statContainer = document.getElementById('statisticContainer');
+const downloadButtonsContainer = document.getElementById('downloadButtonsContainer');
+const downloadedFileContainer = document.getElementById('downloadedFileContainer');
 let variants;
 
-request.open('GET', '/variants');
+request.open('get', '/variants');
 request.send();
 
 request.onerror = function () {
@@ -46,5 +48,27 @@ main.addEventListener('click', (event) => {
         } else {
             console.log('ERROR status', this.status);
         }
+    };
+});
+
+downloadButtonsContainer.addEventListener('click', (event) => {
+    let format = 'text/html';
+
+    if (event.target.name === 'xml') {
+        format = 'application/xml';
+    }
+    if (event.target.name === 'json') {
+        format = 'application/json';
+    }
+
+    request.open('get', '/stat', true);
+    request.setRequestHeader('Accept', format);
+    request.setRequestHeader('Cache-Control', 'no-cache');
+    request.send();
+
+    request.onload = function () {
+        console.log('Statistic content type', this.getResponseHeader('Content-type'));
+        console.log(this.response);
+        downloadedFileContainer.innerText = this.response;
     };
 });

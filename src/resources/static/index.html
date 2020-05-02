@@ -12,12 +12,23 @@
         button {
             margin: 10px;
         }
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
     </style>
 </head>
 <body>
     <div id="statisticContainer"></div>
     <main id="main">
     </main>
+    <textarea id="downloadedFileContainer"></textarea>
+    <div class="downloadButtonsContainer" id="downloadButtonsContainer">
+        <button name="xml">Download in XML format</button>
+        <button name="html">Download in HTML format</button>
+        <button name="json">Download in JSON format</button>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>

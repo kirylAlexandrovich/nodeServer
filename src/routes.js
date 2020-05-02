@@ -22,8 +22,9 @@ router.route('/vote').post((req, res) => {
 
 router.route('/stat').get(async (req, res) => {
     try {
-        const vote = await voteService.get();
+        const vote = await voteService.get(req.headers.accept);
 
+        res.header('Content-Type',  req.headers.accept);
         res.send(vote);
     } catch (e) {
         res.sendStatus(404);
